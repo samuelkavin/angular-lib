@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "mint": {
+      "projectType": "library",
+      "root": "projects/mint",
+      "sourceRoot": "projects/mint/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/mint/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mint/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/mint/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mint/test.ts",
+            "tsConfig": "projects/mint/tsconfig.spec.json",
+            "karmaConfig": "projects/mint/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "mint"
 }
